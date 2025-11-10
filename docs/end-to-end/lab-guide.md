@@ -61,7 +61,7 @@ For Backstage, all of the configurations have been applied within the Backstage 
 Let's go over a quick overview of these plugins and see what they provide and how we installed then.
 
 ### Kubernetes Ingestor 
-Automatically create catalog entities from Kubernetes resources, with support for custom GVKs, Crossplane claims, and KRO resources. It also create GitOps friendly Software Templates for Crossplane Claims/Composites, CRDs, and KRO Instances.  
+Automatically create catalog entities from Kubernetes resources, with support for custom GVKs, Crossplane Composite Resources, and KRO resources. It also create GitOps friendly Software Templates for Crossplane Composite Resources, CRDs, and KRO Instances.  
 
 [Plugin Docs](../component-docs/backstage/plugin-docs/kubernetes-ingestor/overview.md)
 
@@ -533,13 +533,13 @@ All converted to lowercase.
 
 #### Usage Example
 
-To deploy a new Crossplane Claim through ArgoCD:
+To deploy a new Crossplane Composite Resource through ArgoCD:
 
 1. Create the directory structure: `demo-cluster/default/WebApp/`
-2. Add your claim YAML: `demo-cluster/default/WebApp/my-webapp.yaml`
+2. Add your Composite Resource YAML: `demo-cluster/default/WebApp/my-webapp.yaml`
 3. Commit and push to the `main` branch
 4. ArgoCD automatically creates an Application named `default-webapp-my-webapp`
-5. The WebApp claim is synced to the `default` namespace
+5. The WebApp Composite Resource is synced to the `default` namespace
 
 You can view all auto-generated Applications with:
 
@@ -696,7 +696,7 @@ For example, a WebApp composition might create:
 
 #### 6. Examples (`06-examples/`)
 
-Sample claims demonstrating how developers use the platform APIs:
+Sample Composite Resource YAMLs demonstrating how developers use the platform APIs:
 
 **Basic App Example:**
 ```yaml
@@ -739,9 +739,9 @@ spec:
 
 The Crossplane resources integrate with Backstage through:
 
-1. **Automatic Ingestion**: The Kubernetes Ingestor plugin discovers Crossplane Claims and XRDs
+1. **Automatic Ingestion**: The Kubernetes Ingestor plugin discovers Crossplane composite resources and XRDs
 2. **Template Generation**: XRDs are automatically converted to Backstage Software Templates
-3. **Resource Visualization**: The Crossplane plugin displays claim status and managed resources
+3. **Resource Visualization**: The Crossplane plugin displays composite resource status and managed resources
 4. **Self-Service**: Developers can provision infrastructure through Backstage's UI
 
 ### Viewing Crossplane Resources
@@ -756,7 +756,7 @@ View XRDs:
 kubectl get xrds
 ```
 
-List all claims:
+List all composite resource:
 ```bash
 kubectl get apps,clusterapps,webapps -A
 ```
@@ -806,7 +806,7 @@ spec:
 ```
 
 **Purpose:**
-- Ensures all WebApp claims have autoscaling enabled
+- Ensures all WebApp composite resources have autoscaling enabled
 - Prevents deployment of non-scalable web applications
 - Category: Resources | Severity: High
 
@@ -1084,7 +1084,7 @@ Switch to the **Crossplane** tab to see the infrastructure resources provisioned
 ![Crossplane Resources View](../images/dev-flow/07-my-app-crossplane-resources-view.png)
 
 This view shows:
-- **Claim Status**: Whether the Crossplane claim is ready
+- **Composite Resource Status**: Whether the Crossplane composite resource is ready
 - **Managed Resources**: All Kubernetes resources created by Crossplane
 - **Sync Status**: Whether resources are in sync with the desired state
 
@@ -1100,7 +1100,7 @@ The **Graph View** provides a visual representation of resource relationships:
 
 ![Crossplane Resources Graph View](../images/dev-flow/10-my-app-crossplane-resources-graph-view.png)
 
-This helps you understand how your high-level claim translates into actual Kubernetes resources (Deployments, Services, etc.).
+This helps you understand how your high-level composite resource translates into actual Kubernetes resources (Deployments, Services, etc.).
 
 ### Step 4: Creating a New Application
 
@@ -1192,7 +1192,7 @@ Click **Create** to execute the template. You'll see a real-time execution log:
 ![Execution Summary](../images/dev-flow/18-new-app-execution-summary.png)
 
 The scaffolder will:
-1. ✅ Generate the Crossplane claim YAML
+1. ✅ Generate the Crossplane composite resource YAML
 2. ✅ Create a Git branch
 3. ✅ Commit the manifest to the repository
 4. ✅ Create a Pull Request
@@ -2151,7 +2151,7 @@ Crossplane Tools:
 Kyverno Policy Tools:
 * mcp_dev_get_kyverno_policy_reports - Get policy reports for a given entity
 
-* mcp_dev_get_kyverno_crossplane_policy_reports - Get policy reports for Crossplane resources (claims and composites) associated with an entity
+* mcp_dev_get_kyverno_crossplane_policy_reports - Get policy reports for Crossplane resources associated with an entity
 
 * mcp_dev_get_kyverno_policy - Get details of a specific Kyverno policy
 These tools integrate with your Backstage environment to query the software catalog, inspect Crossplane infrastructure resources, and check Kyverno policy compliance for entities and resources in your Kubernetes clusters.
@@ -2235,7 +2235,7 @@ User Intent (XRD) → Platform Logic (Composition) → Infrastructure (Resources
 
 ### **4. GitOps Everything**
 - Platform definitions in Git (XRDs, Compositions)
-- User resources in Git (Claims)
+- User resources in Git (Composite Resources)
 - Policy definitions in Git (Kyverno)
 - Change tracking and rollback capabilities
 

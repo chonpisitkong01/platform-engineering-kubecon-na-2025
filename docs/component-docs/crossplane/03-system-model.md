@@ -24,7 +24,7 @@ An XRD defines a custom infrastructure API. It specifies:
 - The schema (input parameters) users provide when requesting infrastructure
 - The names and structure of the resource
 - Validation rules for inputs
-- Whether claims are supported for multi-tenancy
+- Whether composite resources are supported for multi-tenancy
 
 **Example**: A `Database` XRD might define that users can request a database by specifying:
 

@@ -41,7 +41,7 @@ Composite Resources (XRs) are custom Kubernetes resources that represent your in
 - Encapsulate infrastructure complexity
 - Provide a clean API for teams to provision resources
 - Are managed by composition functions
-- Support claims (ClaimXRs) for multi-tenant isolation
+- Support Composite Resources (XRs) for multi-tenant isolation
 
 Example: An `Database` composite resource might abstract away provider-specific configuration and networking setup.
 

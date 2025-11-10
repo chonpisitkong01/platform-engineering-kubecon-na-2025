@@ -22,7 +22,7 @@ User creates XR → Function 1 (transform) → Function 2 (add defaults) → ...
 
 **Key capabilities**:
 
-- **Multi-language support** - Go, Python, or template-based
+- **Multi-language support** - Go, Python, KCL or Go Templates
 - **Reusable** - Package and share functions across teams
 - **Composable** - Chain multiple functions together
 - **Stateless** - Functions are idempotent and deterministic
@@ -59,7 +59,7 @@ Compositions support conditional logic through policy engines:
 
 ### What are Managed Resources?
 
-Managed Resources (MRs) are Kubernetes custom resources that represent cloud provider resources. Each Crossplane provider publishes their own set of MRs.
+Managed Resources (MRs) are Kubernetes custom resources that represent the resources you created with Crossplane, can be cloud resources, on-prem resources or other services. Each Crossplane provider publishes their own set of MRs.
 
 Examples:
 
@@ -120,7 +120,7 @@ kind: CronOperation
 metadata:
   name: daily-backup
 spec:
-  schedule: "0 2 * * *" # 2 AM daily
+  schedule: "0 2 * * *" # 2 AM daily [based on local machine time]
   resourceRef:
     apiVersion: database.example.com/v1
     kind: Database
@@ -226,7 +226,7 @@ Application Configuration Secret
          ↓ (references)
 Crossplane Composite Resource (provisions infrastructure)
          ↓ (creates)
-Cloud Resources
+Resources
 ```
 
 ### With GitOps
@@ -235,8 +235,8 @@ Crossplane integrates with GitOps operators (Argo CD, Flux):
 
 - Composite resources defined in Git
 - GitOps operator deploys changes
-- Crossplane reconciles infrastructure
-- Single source of truth for infrastructure
+- Crossplane reconciles infrastructure and application resources
+- Single source of truth for infrastructure and application resources
 
 ### With Policy Engines
 
@@ -263,7 +263,7 @@ User requests "WebApp" → Composition:
 
 ### Self-healing Infrastructure
 
-Compositions with watch operations provide self-healing:
+Compositions with WatchOperations provide self-healing:
 
 ```
 Resource becomes Unhealthy → WatchOperation triggered →
@@ -343,7 +343,8 @@ Crossplane's composition functions are the recommended modern approach.
 
 ## Learning Resources
 
-- **[Official Composition Docs](https://docs.crossplane.io/latest/concepts/compositions/)** - Comprehensive composition guide
-- **[Managed Resources Guide](https://docs.crossplane.io/latest/concepts/managed-resources/)** - Deep dive on MRs
-- **[Crossplane Examples](https://github.com/crossplane/crossplane/tree/master/examples)** - Real-world examples
-- **[Community Functions](https://marketplace.upbound.io/)** - Published composition functions
+- **[Official Composition Docs](https://docs.crossplane.io/v2.1/composition/)** - Comprehensive composition guide
+- **[Managed Resources Guide](https://docs.crossplane.io/v2.1/managed-resources/)** - Deep dive on MRs
+- **[Crossplane Guides](https://docs.crossplane.io/v2.1/guides/)** - Crossplane integrations and detailed examples
+- **[Crossplane Community Providers](https://github.com/crossplane-contrib)** - Crossplane Contrib hosts community providers 
+- **[Upbound Marketplace](https://marketplace.upbound.io/)** - Enterprise marketplace with Providers, Functions, Configurations

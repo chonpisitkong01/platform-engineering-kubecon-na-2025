@@ -29,7 +29,7 @@ kind: CronOperation
 metadata:
   name: daily-backup
 spec:
-  schedule: "0 2 * * *" # 2 AM UTC every day
+  schedule: "0 2 * * *" # 2 AM local machine time every day
   resourceRef:
     apiVersion: database.example.com/v1
     kind: Database
@@ -71,7 +71,7 @@ kind: CronOperation
 metadata:
   name: db-backup
 spec:
-  schedule: "0 3 * * *" # 3 AM daily
+  schedule: "0 3 * * *" # 3 AM daily (local machine time) 
   resourceRef:
     apiVersion: rds.aws.crossplane.io/v1beta1
     kind: DBInstance
@@ -92,7 +92,7 @@ kind: CronOperation
 metadata:
   name: maintenance-window
 spec:
-  schedule: "0 2 * * 0" # 2 AM every Sunday
+  schedule: "0 2 * * 0" # 2 AM every Sunday (local machine time)
   resourceRef:
     apiVersion: rds.aws.crossplane.io/v1beta1
     kind: DBInstance
@@ -112,7 +112,7 @@ kind: CronOperation
 metadata:
   name: monthly-scaling-check
 spec:
-  schedule: "0 0 1 * *" # First day of month
+  schedule: "0 0 1 * *" # First day of month (local machine date)
   resourceRef:
     apiVersion: database.example.com/v1
     kind: Database

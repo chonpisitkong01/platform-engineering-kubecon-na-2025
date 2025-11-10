@@ -436,5 +436,5 @@ Public: generic infrastructure patterns
 
 - [System Model](../03-system-model.md) - Understand packages' role
 - [Composition Overview](./composition-overview.md) - What goes in a configuration package
-- [Official Package Docs](https://docs.crossplane.io/latest/concepts/packages/) - Detailed package reference
+- [Official Package Docs](https://docs.crossplane.io/v2.1/packages/) - Detailed package reference
 - [Upbound Marketplace](https://marketplace.upbound.io/) - Browse community packages

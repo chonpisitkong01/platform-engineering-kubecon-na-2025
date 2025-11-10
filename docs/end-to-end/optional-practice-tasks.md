@@ -140,7 +140,7 @@ After completing the end-to-end lab guide, use these optional tasks to deepen yo
 
 1. **Template Requirements:**
    - Asks for: app name, namespace, base image, domain, and team owner
-   - Creates a WebApp Crossplane claim
+   - Creates a WebApp Crossplane composite resource
    - Generates a Backstage catalog entity (catalog-info.yaml)
    - Publishes to GitOps repo via ArgoCD ApplicationSet pattern
 
