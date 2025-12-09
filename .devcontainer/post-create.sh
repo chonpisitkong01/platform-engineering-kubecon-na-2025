@@ -22,7 +22,7 @@ helm install crossplane --namespace crossplane-system --create-namespace crosspl
 
 echo "Install ArgoCD..."
 kubectl create ns argocd
-kubectl apply -f https://raw.githubusercontent.com/argoproj/argo-cd/refs/heads/master/manifests/install.yaml -n argocd
+kubectl create -f https://raw.githubusercontent.com/argoproj/argo-cd/refs/heads/master/manifests/install.yaml -n argocd
 
 echo "Create Backstage RBAC..."
 kubectl create namespace backstage-system
